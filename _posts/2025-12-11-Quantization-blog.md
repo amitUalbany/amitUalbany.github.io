@@ -56,8 +56,7 @@ If you tried to quantize this model using `torch.quantization.prepare` and `torc
 To tell PyTorch where to perform the data type conversions, we use `nn.QuantStub` and `nn.DeQuantStub`. They act as identity operations (placeholders) in the FP32 model but are replaced by actual data conversion modules during the conversion phase.
 Here is our fixed model definition:
 
-```
-python
+```python
 # Updated network architecture with Stubs
 class QuantizedDeepNN(nn.Module):
     def __init__(self):
@@ -95,8 +94,7 @@ Now we run the three-step Post-Training Quantization (PTQ) process:
 
 We load the FP32 weights, set up the quantization configuration (`qconfig`), and use prepare to swap our `QuantStub` placeholders with `Observer` modules. These observers will record activation ranges.
 
-```
-python
+```python
 model_qnn = QuantizedDeepNN()
 model_qnn.load_state_dict(torch.load("simple_nn_fp32.pth"))
 
@@ -113,8 +111,7 @@ print("Model prepared for calibration (observers inserted).")
 
 We run the prepared model through a small dataset. The observers quietly record the `min` and `max` values of the activations for every single tensor that passes through them.
 
-```
-python
+```python
 # Create a dummy calibration data loader
 def get_calibration_data_loader(batch_size=32, num_batches=10):
     # Dummy data: 50 input features
@@ -136,8 +133,7 @@ print("Calibration complete.")
 
 We use the accumulated statistics to finalize the conversion. The observers are removed, weights/biases are rounded and stored as 8-bit integers, and the compute engine is switched to use highly optimized INT8 instructions.
 
-```
-python
+```python
 # Convert the model to INT8
 torch.quantization.convert(model_qnn, inplace=True)
 print("Conversion to INT8 complete.")
@@ -150,8 +146,7 @@ torch.save(model_qnn.state_dict(), "simple_nn_int8.pth")
 
 We can now measure the file sizes of the original FP32 model and the new INT8 model.
 
-```
-python
+```python
 fp32_size = os.path.getsize("simple_nn_fp32.pth") / 1024 / 1024
 int8_size = os.path.getsize("simple_nn_int8.pth") / 1024 / 1024
 
