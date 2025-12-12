@@ -1,5 +1,5 @@
 title: "FP32 to INT8: A Practical Guide to PyTorch Static Quantization and the Accuracy Trade-off"          # change this
-description: "A short description."
+# description: "A short description."
 baseurl: ""                     # leave blank for github_username.github.io
 url: "https://amitUalbany.github.io"   # replace github_username
 theme: minima                   # simple built-in theme
