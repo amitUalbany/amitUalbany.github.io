@@ -1,5 +1,5 @@
 ---
-layout: home
+layout: default
 title: ""   # leave empty to prevent Minima from auto-displaying title
 ---
 
