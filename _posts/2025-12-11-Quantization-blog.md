@@ -10,4 +10,4 @@ This guide explores how to implement Post-Training Static Quantization (PTQ) in 
 The Goal: Efficiency Without Compromise
 We will convert a standard 32-bit floating-point (FP32) model to an 8-bit integer (INT8) model. This reduces storage by 75% and speeds up inference on modern CPUs.
 1. The Baseline: Our Custom FP32 Model
-First, we define a simple deep neural network. This is a basic PyTorch nn.Module class.
+First, we define a simple deep neural network. This is a basic PyTorch nn.Module class. 
