@@ -176,7 +176,9 @@ We achieve a 4x reduction in model size!
 
 This amazing efficiency comes at a cost: a slight drop in accuracy. This happens because quantization is an intentional introduction of rounding error.We map a massive range of 32-bit floating-point values to just 256 possible 8-bit integer values (`-127` to `127`). We use a Scale (`S`) and Zero-point (`Z`) to map between the ranges:
 
-\(\text{INT8 Value} = \text{round}\Big(\frac{\text{FP32 Value}}{S}\Big) + Z\)
+$$
+\text{INT8 Value} = \text{round}\Big(\frac{\text{FP32 Value}}{S}\Big) + Z
+$$
 
 The `round()` operation is where precision is permanently lost.
 
