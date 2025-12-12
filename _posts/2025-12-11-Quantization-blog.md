@@ -15,10 +15,7 @@ We will convert a standard 32-bit floating-point (FP32) model to an 8-bit intege
 
 ### 1. The Baseline: Our Custom FP32 Model
 
-```markdown
-### 1. The Baseline: Our Custom FP32 Model
-
-First, we define a simple deep neural network. This is a basic PyTorch nn.Module class.
+First, we define a simple deep neural network. This is a basic PyTorch 'nn.Module' class.
 
 ```python
 import torch
@@ -50,3 +47,4 @@ class SimpleDeepNN(nn.Module):
 model_fp32 = SimpleDeepNN()
 # Pretend we trained it
 torch.save(model_fp32.state_dict(), "simple_nn_fp32.pth")
+```
