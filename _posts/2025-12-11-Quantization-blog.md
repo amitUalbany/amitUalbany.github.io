@@ -217,7 +217,7 @@ This is why complex models like LLMs require advanced quantization techniques (l
 
 Post-Training Static Quantization is a powerful tool for deploying efficient deep learning models. By strategically adding `QuantStub`s, calibrating the model with a representative dataset, and converting the structure, we achieve substantial memory savings while managing the inherent precision trade-offs.
 
-For further reading, check out the official PyTorch Quantization documentation. A very good blog to understand the basics of quantization and different methods is [Link Text] (https://iq.opengenus.org/basics-of-quantization-in-ml/) and the huggingface docs [Link Text] (https://huggingface.co/docs/optimum/en/concept_guides/quantization).
+For further reading, check out the official PyTorch Quantization documentation. A very good blog to understand the basics of quantization and different methods is [Link Text](https://iq.opengenus.org/basics-of-quantization-in-ml/) and the huggingface docs [Link Text](https://huggingface.co/docs/optimum/en/concept_guides/quantization).
 
 
 
