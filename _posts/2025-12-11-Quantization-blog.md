@@ -188,23 +188,33 @@ We can relate this rounding error to a concept in numerical analysis: ill-condit
 
 We can solve the system:
 
-\[
+<div style="max-width:600px; margin:0 auto;">
+
+$$
 \begin{cases}
 x + y = 2 \\
 x + 1.001y = 2
 \end{cases}
 \quad \text{Solution: } x=2, y=0
-\]
+$$
+
+</div>
+
 
 If a minor \textit{floating-point} error in a computer causes the input `2` to be interpreted as `2.001` during a complex calculation, the result changes drastically:
 
-\[
+<div style="max-width:600px; margin:0 auto;">
+
+$$
 \begin{cases}
 x + y = 2 \\
 x + 1.001y = 2.001
 \end{cases}
 \quad \text{Solution: } x=1, y=1
-\]
+$$
+
+</div>
+
 
 This is why complex models like LLMs require advanced quantization techniques (like **GPTQ** or **AWQ**), which use mathematically sophisticated rounding schemes to minimize the impact of these unavoidable errors.
 Conclusion
