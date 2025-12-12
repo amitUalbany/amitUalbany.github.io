@@ -177,7 +177,7 @@ $$
 
 The `round()` operation is where precision is permanently lost.
 
-### Analogy: Quantization Error vs. Ill-Conditioned Models
+### Analogy: Quantization Error vs. ill-Conditioned Models
 
 We can relate this rounding error to a concept in numerical analysis: ill-conditioned systems.An ill-conditioned system is one where a tiny change in input results in a massive change in output.Consider this system of inear equations (which are nearly parallel lines):
 
