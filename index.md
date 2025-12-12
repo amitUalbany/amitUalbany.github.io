@@ -1,6 +1,5 @@
 ---
 layout: home
-title: Home
+title: "Amit Singh – Blog"
 ---
-
 Welcome to my blog! Browse posts below.
