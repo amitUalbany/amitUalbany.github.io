@@ -217,7 +217,7 @@ This is why complex models like LLMs require advanced quantization techniques (l
 
 Post-Training Static Quantization is a powerful tool for deploying efficient deep learning models. By strategically adding `QuantStub`s, calibrating the model with a representative dataset, and converting the structure, we achieve substantial memory savings while managing the inherent precision trade-offs.
 
-## References and Further Reading and understanding the basics of Quantization
+## References and Further Reading
 
 - [Hugging Face Optimum Documentation on Quantization](https://huggingface.co/docs/optimum/en/concept_guides/quantization)  
 - [The Basics of Quantization in Machine Learning (ML) for Beginners](https://iq.opengenus.org/basics-of-quantization-in-ml/)  
