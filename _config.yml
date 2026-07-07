@@ -1,6 +1,6 @@
-title: "Tech Blog"
-description: "FP32 to INT8: A Practical Guide to PyTorch Static Quantization"
+title: "Amith Kumar Singh"
+description: "PhD CS graduate and Applied AI/ML Engineer building RAG, GraphRAG, graph learning, and production AI systems."
 baseurl: ""
-url: "https://amitUalbany.github.io"
+url: "https://amitualbany.github.io"
 theme: minima
 paginate: 5

@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{{ page.title }}</title>
+  <title>{% if page.title and page.title != "" %}{{ page.title }} | {% endif %}{{ site.title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ page.description | default: site.description }}">
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 
 
-  <!-- Load MathJax -->
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script type="text/javascript">
     window.MathJax = {
@@ -20,16 +20,24 @@
   </script>
 </head>
 <body>
-  <header>
-    <h1>{{ site.title }}</h1>
+  <header class="site-header">
+    <nav class="nav-wrap" aria-label="Primary navigation">
+      <a class="brand" href="{{ '/' | relative_url }}">Amith Kumar Singh</a>
+      <div class="nav-links">
+        <a href="{{ '/' | relative_url }}#projects">Projects</a>
+        <a href="{{ '/resume/' | relative_url }}">Resume</a>
+        <a href="{{ '/blog/' | relative_url }}">Blog</a>
+        <a href="{{ '/' | relative_url }}#contact">Contact</a>
+      </div>
+    </nav>
   </header>
 
-  <main>
+  <main class="page">
     {{ content }}
   </main>
 
-  <footer>
-    <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
+  <footer class="site-footer">
+    <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}. Applied AI, ML research, and production GenAI systems.</p>
   </footer>
 </body>
 </html>
