@@ -228,6 +228,21 @@ h3 {
   font-weight: 700;
 }
 
+.project-links {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 750;
+}
+
+.project-links a {
+  text-decoration: none;
+}
+
+.project-links a:hover {
+  text-decoration: underline;
+}
+
 .split {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;

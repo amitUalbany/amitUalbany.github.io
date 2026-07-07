@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Applied AI/ML Engineer"
-description: "Portfolio for Amith Kumar Singh, PhD CS graduate focused on AI/ML, RAG, GraphRAG, graph learning, and production AI systems."
+description: "Portfolio for Amith Kumar Singh, PhD CS graduate focused on AI/ML, RAG, GraphRAG, graph learning, and production-oriented AI systems."
 ---
 
 <section class="hero">
@@ -27,7 +27,7 @@ description: "Portfolio for Amith Kumar Singh, PhD CS graduate focused on AI/ML,
     <span>PhD work in statistical learning, graph theory, network diffusion, and sample complexity.</span>
   </div>
   <div>
-    <strong>Production AI</strong>
+    <strong>Production-oriented AI</strong>
     <span>FastAPI, Flask, Docker, structured logging, retrieval observability, and evaluation pipelines.</span>
   </div>
   <div>
@@ -54,6 +54,11 @@ description: "Portfolio for Amith Kumar Singh, PhD CS graduate focused on AI/ML,
         <li>Reduced retrieved context tokens by 15-19% with median retrieval latency around 280 ms.</li>
         <li>Built evaluation with RAGAS, Recall@K, answer relevance, latency, and observability metrics.</li>
       </ul>
+      <p class="project-links">
+        <a href="https://github.com/amitUalbany/production-simulated-GraphRAG/blob/main/README.md">README</a>
+        <span>/</span>
+        <a href="https://github.com/amitUalbany/production-simulated-GraphRAG/blob/main/docs/ARCHITECTURE.md">Architecture</a>
+      </p>
       <p class="tags">Python - FastAPI - Qdrant - NetworkX - spaCy - Docker - OpenAI - RAGAS</p>
     </article>
 

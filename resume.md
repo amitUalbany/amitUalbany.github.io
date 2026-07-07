@@ -8,7 +8,7 @@ permalink: /resume/
 <section class="page-title">
   <p class="eyebrow">Resume</p>
   <h1>Amith Kumar Singh</h1>
-  <p>Applied AI/ML Engineer - PhD Computer Science - RAG, GraphRAG, graph learning, and production GenAI systems.</p>
+  <p>Applied AI/ML Engineer - PhD Computer Science - RAG, GraphRAG, graph learning, and production-oriented GenAI systems.</p>
   <div class="hero-actions">
     <a class="button primary" href="{{ '/assets/resume/Amith_Kumar_Singh_Resume.pdf' | relative_url }}">Download PDF</a>
     <a class="button" href="mailto:aks4amitkumarsingh@gmail.com">Email</a>
@@ -42,6 +42,7 @@ permalink: /resume/
   <h3>GraphRAG Financial Intelligence Platform</h3>
   <p>Built an end-to-end GraphRAG platform over SEC 10-K filings integrating vector search, knowledge graph reasoning, hybrid retrieval, reranking, rank fusion, semantic caching, APIs, and retrieval evaluation.</p>
   <p><strong>Impact:</strong> +12% Recall@10 over vector-only RAG, 15-19% fewer retrieved context tokens, and median retrieval latency around 280 ms.</p>
+  <p><strong>Links:</strong> <a href="https://github.com/amitUalbany/production-simulated-GraphRAG/blob/main/README.md">README</a> / <a href="https://github.com/amitUalbany/production-simulated-GraphRAG/blob/main/docs/ARCHITECTURE.md">Architecture</a></p>
 
   <h3>High-Precision RAG Platform with Retrieval Observability</h3>
   <p>Built hybrid RAG with BM25, dense retrieval, RRF, cross-encoders, deduplication, uncertainty monitoring, and governance thresholds for low-confidence answers.</p>
