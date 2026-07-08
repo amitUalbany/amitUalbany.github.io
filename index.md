@@ -39,7 +39,7 @@ description: "Portfolio for Amith Kumar Singh, PhD CS graduate focused on AI/ML,
 <section id="projects" class="section">
   <div class="section-heading">
     <p class="eyebrow">Featured work</p>
-    <h2>AI/ML projects recruiters can scan quickly</h2>
+    <h2>AI/ML projects</h2>
   </div>
 
   <div class="project-grid">
