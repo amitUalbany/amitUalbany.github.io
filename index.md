@@ -14,7 +14,7 @@ description: "Portfolio for Amith Kumar Singh, PhD CS graduate focused on AI/ML,
     graph neural networks, probabilistic network diffusion, and evaluation pipelines.
   </p>
   <div class="hero-actions">
-    <a class="button primary" href="{{ '/assets/resume/Amith_Kumar_Singh_Resume.pdf' | relative_url }}">Download Resume</a>
+    <a class="button primary" href="{{ '/assets/resume/AmithKSingh_CV_0707.pdf' | relative_url }}">Download Resume</a>
     <a class="button" href="https://www.linkedin.com/in/amith-kumar-singh-33568b68">LinkedIn</a>
     <a class="button" href="https://github.com/amitUalbany">GitHub</a>
     <a class="button" href="mailto:aks4amitkumarsingh@gmail.com">Email</a>
