@@ -10,7 +10,7 @@ permalink: /resume/
   <h1>Amith Kumar Singh</h1>
   <p>Applied AI/ML Engineer - PhD Computer Science - RAG, GraphRAG, graph learning, and production-oriented GenAI systems.</p>
   <div class="hero-actions">
-    <a class="button primary" href="{{ '/assets/resume/Amith_Kumar_Singh_Resume.pdf' | relative_url }}">Download PDF</a>
+    <a class="button primary" href="{{ '/assets/resume/AmithKSingh_CV_0707.pdf' | relative_url }}">Download PDF</a>
     <a class="button" href="mailto:aks4amitkumarsingh@gmail.com">Email</a>
     <a class="button" href="https://www.linkedin.com/in/amith-kumar-singh-33568b68">LinkedIn</a>
     <a class="button" href="https://github.com/amitUalbany">GitHub</a>
