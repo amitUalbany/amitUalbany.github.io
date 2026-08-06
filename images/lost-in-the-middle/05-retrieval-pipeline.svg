@@ -1,0 +1,40 @@
+<svg viewBox="0 0 700 130" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="700" height="130" fill="#ffffff"/>
+  <g font-size="9.7" fill="#0f172a">
+  <rect x="5" y="35" width="105" height="55" rx="6" fill="#f0fdfa" stroke="#0d9488"/>
+  <text x="57" y="58" text-anchor="middle" font-weight="700">Query</text>
+  <text x="57" y="72" text-anchor="middle" font-weight="700">understanding</text>
+
+  <rect x="120" y="35" width="105" height="55" rx="6" fill="#f0fdfa" stroke="#0d9488"/>
+  <text x="172" y="52" text-anchor="middle" font-weight="700">BM25 +</text>
+  <text x="172" y="66" text-anchor="middle" font-weight="700">dense</text>
+  <text x="172" y="80" text-anchor="middle" font-weight="700">retrieval</text>
+
+  <rect x="235" y="35" width="105" height="55" rx="6" fill="#f0fdfa" stroke="#0d9488"/>
+  <text x="287" y="52" text-anchor="middle" font-weight="700">Metadata /</text>
+  <text x="287" y="66" text-anchor="middle" font-weight="700">access</text>
+  <text x="287" y="80" text-anchor="middle" font-weight="700">filters</text>
+
+  <rect x="350" y="35" width="105" height="55" rx="6" fill="#f0fdfa" stroke="#0d9488"/>
+  <text x="402" y="58" text-anchor="middle" font-weight="700">Cross-encoder</text>
+  <text x="402" y="72" text-anchor="middle" font-weight="700">reranking</text>
+
+  <rect x="465" y="35" width="105" height="55" rx="6" fill="#f0fdfa" stroke="#0d9488"/>
+  <text x="517" y="65" text-anchor="middle" font-weight="700">Dedup-</text>
+  <text x="517" y="79" text-anchor="middle" font-weight="700">lication</text>
+
+  <rect x="580" y="35" width="115" height="55" rx="6" fill="#0f172a"/>
+  <text x="637" y="58" text-anchor="middle" font-weight="700" fill="#ffffff">Context</text>
+  <text x="637" y="72" text-anchor="middle" font-weight="700" fill="#5eead4">compression</text>
+  </g>
+  <path d="M110,62 L118,62" stroke="#94a3b8" stroke-width="2" marker-end="url(#a4)"/>
+  <path d="M225,62 L233,62" stroke="#94a3b8" stroke-width="2" marker-end="url(#a4)"/>
+  <path d="M340,62 L348,62" stroke="#94a3b8" stroke-width="2" marker-end="url(#a4)"/>
+  <path d="M455,62 L463,62" stroke="#94a3b8" stroke-width="2" marker-end="url(#a4)"/>
+  <path d="M570,62 L578,62" stroke="#94a3b8" stroke-width="2" marker-end="url(#a4)"/>
+  <defs>
+    <marker id="a4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>
