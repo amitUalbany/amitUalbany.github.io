@@ -7,7 +7,7 @@ categories: [engineering, llm-infrastructure, rag]
 tags: [llm, rag, retrieval, context-window, attention, production-ai]
 ---
 
-Modern LLMs can accept enormous prompts — 128K, 200K, even a million tokens. That capability has quietly reshaped how many teams build retrieval-augmented systems: retrieve broadly, stuff everything into the prompt, and trust the model to sort it out.<sup><a href="#ref-5">[5]</a></sup>
+Modern LLMs can accept enormous prompts like 128K, 200K, even a million tokens. That capability has quietly reshaped how many teams build retrieval-augmented systems: retrieve broadly, stuff everything into the prompt, and trust the model to sort it out.<sup><a href="#ref-5">[5]</a></sup>
 
 It's a tempting shortcut. It's also the wrong mental model.
 
@@ -29,7 +29,7 @@ A model's ability to *accept* a long prompt is not the same as its ability to *u
 
 Say a retrieval system pulls 20 passages for a single user question. In practice, maybe three of them actually support the answer. The rest are typically some mix of partially relevant, duplicated, outdated, tied to the wrong time period, or semantically close but factually different.
 
-Every additional passage introduces more tokens and representations that the model must distinguish from the evidence that actually matters. If the three good passages are the *signal* and the rest are *noise*, adding more retrieved documents can make the signal-to-noise ratio worse, not better — which is why retrieval recall going up and answer quality going down often happen in the same release.
+Every additional passage introduces more tokens and representations that the model must distinguish from the evidence that actually matters. If the three good passages are the *signal* and the rest are *noise*, adding more retrieved documents can make the signal-to-noise ratio worse, not better, which is why retrieval recall going up and answer quality going down often happen in the same release.
 
 ![20 retrieved passages, only 3 are signal, feeding into an LLM prompt]({{ '/images/lost-in-the-middle/01-signal-to-noise.svg' | relative_url }})
 
@@ -37,13 +37,13 @@ Every additional passage introduces more tokens and representations that the mod
 
 ## 2. Why Long, Noisy Context Hurts
 
-Attention softmax is a useful lens here, though not the complete explanation. For each query token, an attention head distributes weight across earlier tokens, and as context grows, more terms get added to that distribution. Softmax doesn't automatically flatten just because a sequence is long — if a relevant token's score is meaningfully higher than nearby distractors, attention can stay focused even in a long prompt.
+Attention softmax is a useful lens here, though not the complete explanation. For each query token, an attention head distributes weight across earlier tokens, and as context grows, more terms get added to that distribution. Softmax doesn't automatically flatten just because a sequence is long, if a relevant token's score is meaningfully higher than nearby distractors, attention can stay focused even in a long prompt.
 
 The failure mode shows up when the score gap between relevant and irrelevant content isn't large enough to outweigh the combined pull of many distractors — and position compounds this: evidence in the middle of a long sequence is often underused even when it's fully present and relevant.
 
 ![A commonly observed position-sensitivity pattern: accuracy is higher near the start and end of the prompt, lower in the middle]({{ '/images/lost-in-the-middle/02-u-shaped-curve.svg' | relative_url }})
 
-It's also worth separating two different softmaxes. Attention softmax decides which earlier tokens influence the current hidden state; the final vocabulary softmax decides which token gets generated next. Diffuse attention doesn't directly mean equal output probability — many transformer layers sit between the two. A more accurate failure chain is: long, noisy context → weak evidence separation or unfavorable position → evidence poorly integrated → weakly-grounded hidden state → an unsupported continuation.
+It's also worth separating two different softmaxes. Attention softmax decides which earlier tokens influence the current hidden state; the final vocabulary softmax decides which token gets generated next. Diffuse attention doesn't directly mean equal output probability, many transformer layers sit between the two. A more accurate failure chain is: long, noisy context → weak evidence separation or unfavorable position → evidence poorly integrated → weakly-grounded hidden state → an unsupported continuation.
 
 And because generation is autoregressive, an early unsupported claim can propagate: a wrong date stated in sentence one can be referenced fluently and consistently in sentence two, even though the underlying premise was never grounded in the evidence.
 
@@ -53,9 +53,9 @@ LLM inference runs in two phases, and lost-in-the-middle touches both.
 
 ![Prefill processes the full prompt; decode generates one token at a time]({{ '/images/lost-in-the-middle/04-prefill-decode.svg' | relative_url }})
 
-**Prefill** processes the entire prompt — system instructions, retrieved evidence, history, and the request — and is where the model first processes a poorly ordered or distractor-heavy context. **Decode** generates one token at a time. At every decoding step, the model computes a new attention distribution over the stored representations produced during prefill. The prompt establishes or amplifies the evidence-selection challenge during prefill; decode is where the consequences repeatedly appear, one token at a time.
+**Prefill** processes the entire prompt, system instructions, retrieved evidence, history, and the request — and is where the model first processes a poorly ordered or distractor-heavy context. **Decode** generates one token at a time. At every decoding step, the model computes a new attention distribution over the stored representations produced during prefill. The prompt establishes or amplifies the evidence-selection challenge during prefill; decode is where the consequences repeatedly appear, one token at a time.
 
-A quick but important clarification: **the KV cache is not "diluted" by long context.** It stores key/value tensors for previous tokens purely to avoid recomputing them at every decoding step — attention itself is recalculated fresh for every new token, not frozen inside the cache. If your context is noisy or poorly ordered, decoding may fail to use the cached representations well, but that's a property of the context, not a defect in the cache. The cache preserves computation faithfully; it doesn't correct quality.
+A quick but important clarification: **the KV cache is not "diluted" by long context.** It stores key/value tensors for previous tokens purely to avoid recomputing them at every decoding step, attention itself is recalculated fresh for every new token, not frozen inside the cache. If your context is noisy or poorly ordered, decoding may fail to use the cached representations well, but that's a property of the context, not a defect in the cache. The cache preserves computation faithfully; it doesn't correct quality.
 
 ## 4. What Infrastructure Optimizations Actually Solve
 
@@ -83,25 +83,25 @@ The strongest mitigation happens before the prompt reaches the LLM at all:
 
 A few things worth calling out:
 
-- **Metadata/ACL filtering** belongs early, not as an afterthought — in an enterprise setting, filtering out content a user isn't entitled to see, or that's from the wrong tenant, time period, or document version, needs to happen before or during retrieval, not downstream.
-- **Hybrid retrieval** (BM25 + dense) covers both exact terms — names, IDs, dates, error codes — and semantic similarity, which either method alone tends to miss.
+- **Metadata/ACL filtering** belongs early, not as an afterthought, in an enterprise setting, filtering out content a user isn't entitled to see, or that's from the wrong tenant, time period, or document version, needs to happen before or during retrieval, not downstream.
+- **Hybrid retrieval** (BM25 + dense) covers both exact terms, names, IDs, dates, error codes, and semantic similarity, which either method alone tends to miss.
 - **Cross-encoder reranking** catches relevance distinctions the fast first-stage retriever isn't built to make.
-- **Evidence ordering** (placing higher-ranked evidence near prompt boundaries) is a heuristic worth testing on your own models, not a guaranteed fix — different models show different positional behavior.<sup><a href="#ref-1">[1]</a></sup>
-- **Grounding and validation** — citation-existence checks, claim-support verification, contradiction detection, explicit abstention — sit at the end because they're a safety net, not a cure. They detect and contain unsupported output; they don't change the underlying attention behavior that produced it.
+- **Evidence ordering** (placing higher-ranked evidence near prompt boundaries) is a heuristic worth testing on your own models, not a guaranteed fix, different models show different positional behavior.<sup><a href="#ref-1">[1]</a></sup>
+- **Grounding and validation** — citation-existence checks, claim-support verification, contradiction detection, explicit abstention, sit at the end because they're a safety net, not a cure. They detect and contain unsupported output; they don't change the underlying attention behavior that produced it.
 
 ## 6. How to Evaluate It
 
-Track quality and infrastructure as separate axes — a system can be fast and wrong, or accurate and too expensive to run. On the quality side: recall@K, claim-support rate, citation precision, contradiction rate, correct-abstention rate. On the infra side: time to first token, prefix-cache hit rate, GPU utilization, cost per request.
+Track quality and infrastructure as separate axes, a system can be fast and wrong, or accurate and too expensive to run. On the quality side: recall@K, claim-support rate, citation precision, contradiction rate, correct-abstention rate. On the infra side: time to first token, prefix-cache hit rate, GPU utilization, cost per request.
 
-Then test position sensitivity directly. Place the same relevant passage at different points in the prompt — start, first quarter, middle, third quarter, end — hold everything else constant, and measure answer accuracy, citation correctness, and abstention at each position. Repeat across prompt lengths and models. The result is a workload-specific position-sensitivity curve, which is far more actionable than trusting a general benchmark that was never run against your data.
+Then test position sensitivity directly. Place the same relevant passage at different points in the prompt, start, first quarter, middle, third quarter, end, hold everything else constant, and measure answer accuracy, citation correctness, and abstention at each position. Repeat across prompt lengths and models. The result is a workload-specific position-sensitivity curve, which is far more actionable than trusting a general benchmark that was never run against your data.
 
 ---
 
 ## Final Takeaway
 
-Lost in the middle points at an important production reality: **context capacity is not context intelligence.** A long context window lets the model receive more information — it doesn't guarantee that every piece of it will be used equally, or correctly.
+Lost in the middle points at an important production reality: **context capacity is not context intelligence.** A long context window lets the model receive more information, it doesn't guarantee that every piece of it will be used equally, or correctly.
 
-Retrieval, reranking, and compression improve what the model is given. KV caching, prefix caching,<sup><a href="#ref-6">[6]</a></sup> PagedAttention, and FlashAttention improve how efficiently it processes that input. Grounding and validation catch what still gets through. No single technique solves the whole problem — they solve different problems that happen to sit on the same request path.
+Retrieval, reranking, and compression improve what the model is given. KV caching, prefix caching,<sup><a href="#ref-6">[6]</a></sup> PagedAttention, and FlashAttention improve how efficiently it processes that input. Grounding and validation catch what still gets through. No single technique solves the whole problem, they solve different problems that happen to sit on the same request path.
 
 > **Do not send the largest context that fits. Send the smallest, cleanest, and most complete evidence set that supports the answer.**
 
