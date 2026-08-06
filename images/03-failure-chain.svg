@@ -1,0 +1,33 @@
+<svg viewBox="0 0 700 210" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="700" height="210" fill="#ffffff"/>
+  <g font-size="10.3" fill="#0f172a">
+  <rect x="10" y="15" width="140" height="42" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="80" y="32" text-anchor="middle" font-weight="700">Long, noisy</text>
+  <text x="80" y="46" text-anchor="middle" font-weight="700">context</text>
+
+  <rect x="170" y="15" width="150" height="42" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="245" y="30" text-anchor="middle">Weak evidence</text>
+  <text x="245" y="44" text-anchor="middle">separation / position</text>
+
+  <rect x="340" y="15" width="150" height="42" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="415" y="30" text-anchor="middle">Evidence poorly</text>
+  <text x="415" y="44" text-anchor="middle">integrated</text>
+
+  <rect x="510" y="15" width="150" height="42" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="585" y="30" text-anchor="middle">Weakly-grounded</text>
+  <text x="585" y="44" text-anchor="middle">hidden state</text>
+
+  <rect x="255" y="120" width="220" height="42" rx="6" fill="#0f172a"/>
+  <text x="365" y="137" text-anchor="middle" fill="#ffffff" font-weight="700">Model selects an</text>
+  <text x="365" y="151" text-anchor="middle" fill="#5eead4" font-weight="700">unsupported continuation</text>
+  </g>
+  <path d="M150,36 L168,36" stroke="#94a3b8" stroke-width="2" marker-end="url(#a2)"/>
+  <path d="M320,36 L338,36" stroke="#94a3b8" stroke-width="2" marker-end="url(#a2)"/>
+  <path d="M490,36 L508,36" stroke="#94a3b8" stroke-width="2" marker-end="url(#a2)"/>
+  <path d="M585,58 L585,90 L365,90 L365,118" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#a2)"/>
+  <defs>
+    <marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>
