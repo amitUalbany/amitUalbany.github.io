@@ -21,8 +21,6 @@ A model's ability to *accept* a long prompt is not the same as its ability to *u
 - What KV caching and PagedAttention actually solve
 - What a production mitigation pipeline looks like
 
-*(For query decomposition, compression caveats, guided decoding, and the full metrics breakdown, see the [long-form technical version](LONG_FORM_ARTICLE_URL) of this piece.)*
-
 ---
 
 ## 1. What "Lost in the Middle" Means
@@ -152,4 +150,4 @@ Retrieval, reranking, and compression improve what the model is given. KV cachin
 
 **Amith Kumar Singh, Ph.D.**
 Applied AI / ML Engineer — building production-oriented RAG, GraphRAG, evaluation, and LLM infrastructure systems.
-[LinkedIn](https://www.linkedin.com/in/amith-kumar-singh-33568b68) · [Portfolio](https://amitualbany.github.io) · [GitHub](https://github.com/amitualbany)
+[LinkedIn](https://www.linkedin.com/in/amith-kumar-singh-33568b68)
