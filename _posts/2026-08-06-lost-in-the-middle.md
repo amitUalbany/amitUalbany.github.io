@@ -2,7 +2,7 @@
 layout: post
 title: "Lost in the Middle: Why a Bigger Context Window Doesn't Guarantee a Better Answer"
 subtitle: "Why long, noisy context hurts LLM answers - and what production teams should build instead"
-date: 2026-08-05
+date: 2026-08-06
 categories: [engineering, llm-infrastructure, rag]
 tags: [llm, rag, retrieval, context-window, attention, production-ai]
 ---
