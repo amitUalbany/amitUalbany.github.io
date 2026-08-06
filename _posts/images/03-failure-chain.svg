@@ -1,0 +1,19 @@
+<svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="700" height="260" fill="#ffffff"/>
+  <text x="350" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">The Classic "U-Shaped" Position Effect</text>
+  <line x1="70" y1="220" x2="650" y2="220" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="70" y1="220" x2="70" y2="50" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="360" y="245" text-anchor="middle" font-size="10.5" fill="#475569">Position of relevant passage in the prompt</text>
+  <text x="35" y="135" text-anchor="middle" font-size="10.5" fill="#475569" transform="rotate(-90 35 135)">Answer accuracy</text>
+  <text x="70" y="235" text-anchor="middle" font-size="9.5" fill="#64748b">Start</text>
+  <text x="360" y="235" text-anchor="middle" font-size="9.5" fill="#64748b">Middle</text>
+  <text x="650" y="235" text-anchor="middle" font-size="9.5" fill="#64748b">End</text>
+  <path d="M70,70 C 220,95 260,190 360,195 C 460,190 500,95 650,68" fill="none" stroke="#0d9488" stroke-width="3.5"/>
+  <circle cx="70" cy="70" r="5" fill="#0d9488"/>
+  <circle cx="360" cy="195" r="5" fill="#dc2626"/>
+  <circle cx="650" cy="68" r="5" fill="#0d9488"/>
+  <text x="360" y="212" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="700">weakest utilization</text>
+  <rect x="470" y="55" width="165" height="42" rx="6" fill="#f0fdfa" stroke="#0d9488"/>
+  <text x="552" y="72" text-anchor="middle" font-size="9" fill="#0f172a">Illustrative pattern &#8212;</text>
+  <text x="552" y="86" text-anchor="middle" font-size="9" fill="#0f172a">verify per model/workload</text>
+</svg>
